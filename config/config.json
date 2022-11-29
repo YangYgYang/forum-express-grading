@@ -9,7 +9,8 @@
     "production": {
       "username": "root",
       "password": "2D754Z6njs0p",
-      "host": "infra.zeabur.com:30533"
+      "host": "infra.zeabur.com",
+      "port":"30533"
     },
     "travis": {
       "username": "travis",
