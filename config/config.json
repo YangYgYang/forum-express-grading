@@ -9,8 +9,7 @@
     "production": {
       "username": "root",
       "password": "2D754Z6njs0p",
-      "host": "infra.zeabur.com",
-      "dialect": "mysql"
+      "host": "infra.zeabur.com"
     },
     "travis": {
       "username": "travis",
