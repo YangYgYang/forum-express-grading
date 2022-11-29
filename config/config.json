@@ -7,7 +7,10 @@
       "dialect": "mysql"
     },
     "production": {
-      "use_env_variable": "CLEARDB_DATABASE_URL"
+      "username": "root",
+      "password": "2D754Z6njs0p",
+      "host": "infra.zeabur.com",
+      "dialect": "mysql"
     },
     "travis": {
       "username": "travis",
