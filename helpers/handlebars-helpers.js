@@ -1,6 +1,6 @@
 const dayjs = require('dayjs')
-const relativeTime = require('dayjs/plugin/relativeTime') // 增加這裡
-dayjs.extend(relativeTime) // 增加這裡
+const relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 
 module.exports = {
   currentYear: () => dayjs().year(),
