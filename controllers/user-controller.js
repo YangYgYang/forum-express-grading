@@ -148,7 +148,6 @@ const userController = {
       .catch(err => next(err))
   },
   addLike: (req, res, next) => {
-    // console.log('有進到這邊的路由嗎', req.params)
     const { restaurantId } = req.params
     return Promise.all([
       Restaurant.findByPk(restaurantId),
