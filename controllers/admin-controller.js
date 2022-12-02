@@ -48,7 +48,6 @@ const adminController = {
       include: [Category]
     })
       .then(restaurant => {
-        console.log(restaurant)
         if (!restaurant) throw new Error("Restaurant didn't exist!")
         res.render('admin/restaurant', { restaurant })
       })

@@ -48,7 +48,6 @@ const restaurantController = {
       ]
     })
       .then(restaurants => {
-        console.log('餐廳在這', restaurants)
         if (!restaurants) throw new Error("Restaurant didn't exist!")
         Restaurant.increment('viewCounts', { where: { id: req.params.id } })
         return restaurants

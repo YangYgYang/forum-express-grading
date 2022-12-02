@@ -38,7 +38,6 @@ const userController = {
     res.redirect('/signin')
   },
   getUser: (req, res, next) => {
-    // console.log('$$$', req.params.id)
     return User.findByPk(req.params.id, {
       raw: true,
       include: [
@@ -79,7 +78,6 @@ const userController = {
       // .catch(err => next(err))
   },
   editUser: (req, res, next) => {
-    // console.log(req.params.id)
     return User.findByPk(req.params.id, {
       raw: true
     })

@@ -33,7 +33,6 @@ app.use((req, res, next) => {
   res.locals.success_messages = req.flash('success_messages')
   res.locals.error_messages = req.flash('error_messages')
   res.locals.user = getUser(req)
-  // console.log('看一下', req.user)
   next()
 })
 
@@ -43,7 +42,6 @@ app.set('view engine', 'hbs')
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = getUser(req)
-  // console.log('看三小', req.user)
   next()
 })
 app.use(routes)
