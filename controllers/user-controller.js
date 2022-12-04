@@ -118,29 +118,45 @@ const userController = {
         }
       })
     ])
-      .then(([restaurant, favorite]) => {
+      .then(async ([restaurant, favorite]) => {
         if (!restaurant) throw new Error("Restaurant didn't exist!")
         if (favorite) throw new Error('You have favorited this restaurant!')
 
-        return Favorite.create({
-          userId: req.user.id,
-          restaurantId
-        })
+        return Promise.all([
+          Favorite.create({
+            userId: req.user.id,
+            restaurantId
+          }),
+          Restaurant.update(
+            { countFavorite: restaurant.countFavorite * 1 + 1 },
+            { where: { id: restaurantId } }
+          )
+        ])
       })
       .then(() => res.redirect('back'))
       .catch(err => next(err))
   },
   removeFavorite: (req, res, next) => {
-    return Favorite.findOne({
-      where: {
-        userId: req.user.id,
-        restaurantId: req.params.restaurantId
-      }
-    })
-      .then(favorite => {
+    const { restaurantId } = req.params
+    Promise.all([
+      Restaurant.findByPk(restaurantId),
+      Favorite.findOne({
+        where: {
+          userId: req.user.id,
+          restaurantId: req.params.restaurantId
+        }
+      })
+    ])
+      .then(([restaurant, favorite]) => {
         if (!favorite) throw new Error("You haven't favorited this restaurant")
 
-        return favorite.destroy()
+        return Promise.all([
+          favorite.destroy(),
+          Restaurant.update(
+            { countFavorite: restaurant.countFavorite * 1 - 1 },
+            { where: { id: restaurantId } }
+          )
+        ])
       })
       .then(() => res.redirect('back'))
       .catch(err => next(err))

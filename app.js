@@ -17,7 +17,14 @@ const app = express()
 const port = process.env.PORT || 3000
 const SESSION_SECRET = 'secret'
 
-// const db = require('./models')
+// app.use((req, res, next) => {
+//   res.locals.isAuthenticated = req.isAuthenticated()
+//   res.locals.user = getUser(req)
+//   next()
+// })
+
+require('./models')
+
 app.use(express.urlencoded({ extended: true }))
 // app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false }))
@@ -39,11 +46,6 @@ app.use((req, res, next) => {
 app.engine('hbs', handlebars({ extname: '.hbs', helpers: handlebarsHelpers }))
 app.set('view engine', 'hbs')
 
-app.use((req, res, next) => {
-  res.locals.isAuthenticated = req.isAuthenticated()
-  res.locals.user = getUser(req)
-  next()
-})
 app.use(routes)
 
 app.listen(port, () => {

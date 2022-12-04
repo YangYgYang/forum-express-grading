@@ -1,3 +1,4 @@
+const { Op } = require('sequelize')
 const { Restaurant, Category, Comment, User } = require('../models')
 const { getOffset, getPagination } = require('../helpers/pagination-helper')
 const restaurantController = {
@@ -96,6 +97,25 @@ const restaurantController = {
           restaurants,
           comments
         })
+      })
+      .catch(err => next(err))
+  },
+  getTopRestaurants: (req, res, next) => {
+    // console.log(req)
+    const userFavorutedRestaurant = req.user.FavoritedRestaurants || []
+    return Restaurant.findAll({
+      order: [['countFavorite', 'DESC']],
+      where: { countFavorite: { [Op.lt]: 10 } }
+    })
+      .then(restaurants => {
+        const result = restaurants
+          .map(rest => {
+            return rest.dataValues
+          })
+        result.forEach(rest => {
+          rest.isFavorited = userFavorutedRestaurant.some(r => r.id === rest.id)
+        })
+        res.render('top-restaurants', { result })
       })
       .catch(err => next(err))
   }
