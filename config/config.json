@@ -1,9 +1,8 @@
 {
     "development": {
       "username": "root",
-      "password": "password",
-      "database": "forum",
-      "host": "127.0.0.1",
+      "password": "2D754Z6njs0p",
+      "host": "infra.zeabur.com",
       "dialect": "mysql"
     },
     "travis": {
