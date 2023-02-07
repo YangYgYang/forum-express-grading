@@ -4,7 +4,8 @@
       "password": "2D754Z6njs0p",
       "host": "infra.zeabur.com",
       "port":"30533",
-      "dialect": "mysql"
+      "dialect": "mysql",
+      "database": "forum"
     },
     "travis": {
       "username": "travis",
