@@ -12,5 +12,11 @@
       "host": "127.0.0.1",
       "dialect": "mysql",
       "logging": false
+    },
+    "product": {
+      "username": "root",
+      "password":"2D754Z6njs0p",
+      "host": "infra.zeabur.com",
+      "port":"30533"
     }
   }
