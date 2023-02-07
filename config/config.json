@@ -5,7 +5,7 @@
       "host": "infra.zeabur.com",
       "port":"30533",
       "dialect": "mysql",
-      "database": "forum"
+      "database": "mysql"
     },
     "travis": {
       "username": "travis",
