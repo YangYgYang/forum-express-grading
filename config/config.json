@@ -3,7 +3,6 @@
       "username": "root",
       "password": "2D754Z6njs0p",
       "host": "infra.zeabur.com",
-      "port":"30533",
       "dialect": "mysql",
       "database": "mysql"
     },
