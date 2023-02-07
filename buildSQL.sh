@@ -1,1 +1,2 @@
-npx sequelize db:migrate:all
+npx sequelize-cli db:migrate
+npx sequelize db:migrate
